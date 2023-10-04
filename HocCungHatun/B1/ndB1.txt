@@ -1,0 +1,4 @@
+bài đầu tiên :
+	- Trình biên dịch IDE. DEV C++
+	- Cấu trúc chương trình cơ bản.
+	- Câu lệnh nhập, xuất dữ.
