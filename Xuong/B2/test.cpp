@@ -1,21 +1,34 @@
 #include <stdio.h>
-#include <math.h>
+#include <stdlib.h>
+#include <time.h>
 
-int main(){
-    float tienvay;
-    printf("Nhap so tien muon vay: ");
-    scanf("%d",&tienvay);
-    float RATE=0.05;
-    float tienlai=0;
-    float tiengocphaithanhtoan=1000000;
-    float tienphaithanhtoan=0;
-    for(int i=1;i<=12;i++){
-        printf("\n\tThang thu %d:",i);
-        tienlai= tienvay*RATE;
-        printf("\nTien lai phai tra = %.0f",tienlai);
-        printf("\nTien goc phai tra = %.0f",tiengocphaithanhtoan);
-        tienphaithanhtoan=tiengocphaithanhtoan+tienlai;
-        printf("\nTien phai tra thang thu %d = %.0f",i,tiengocphaithanhtoan);
-        tienvay=tienvay-tiengocphaithanhtoan;
+int main() {
+    int numbers[99];
+    int selected[5];
+    int i, j;
+
+    // Khởi tạo mảng numbers từ 1 đến 99
+    for (i = 0; i < 99; i++) {
+        numbers[i] = i + 1;
     }
+
+    // Khởi tạo seed cho hàm ngẫu nhiên dựa trên thời gian
+    srand(time(NULL));
+
+    // Chọn ngẫu nhiên 5 số không trùng nhau
+    for (i = 0; i < 5; i++) {
+        int dinex = rand() % (99 - i); // Chọn một vị trí ngẫu nhiên trong mảng còn lại
+        selected[i] = numbers[i];  // Lưu số được chọn vào mảng selected
+        // Loại bỏ số đã chọn bằng cách thay thế nó bằng số cuối cùng trong mảng
+        numbers[i] = numbers[98 - i];
+    }
+
+    // In ra 5 số đã chọn
+    printf("5 số ngẫu nhiên không trùng nhau từ 1 đến 99: ");
+    for (i = 0; i < 5; i++) {
+        printf("%02d ", selected[i]);
+    }
+    printf("\n");
+
+    return 0;
 }
