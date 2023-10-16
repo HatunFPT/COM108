@@ -3,37 +3,49 @@
 #include <math.h>
 #include <time.h>
 
+int nhapTrongKhoang(int n,int m){
+	int num;
+	do{
+		printf("\nMoi nhap so may man: ");
+		scanf("%d",&num);
+		if(num<n || num >m){
+			printf("Loi roi. So phai nam trong khoang tu %d - %d. Nhap lai!\n",n,m);
+		}
+	} while(num<n || num >m);
+	return num;
+}
+void randLucky(int a[],int n){
+	srand(time(NULL));	
+	for(int i=0;i<n;i++){
+		a[i]=rand() % 14 +1;
+	}
+	printf("\n%d so may man la: ",n);
+	for(int i=0;i<n;i++){
+		printf("%5d",a[i]);
+	}
+}
+int checkLucky(int a[],int n,int num1,int num2){
+	int check=0;
+	for(int i=0;i<n;i++){
+		if(num1==a[i] || num2==a[i]){
+			check=1;
+		}
+	}
+	return check;
+}
 int main (){
-//	int number1,number2;
-//	do{
-//		printf("Moi nhap so thu nhat: ");
-//		scanf("%d",&number1);
-//		if(number1<1 || number1 >15){
-//			printf("Loi roi. So phai nam trong khoang tu 1-15. Nhap lai!");
-//		}
-//	} while(number1<1 || number1 >15);
-//	do{
-//		printf("Moi nhap so thu hai: ");
-//		scanf("%d",&number2);
-//		if(number2<1 || number2 >15){
-//			printf("Loi roi. So phai nam trong khoang tu 1-15. Nhap lai!");
-//		}
-//	} while(number2<1 || number2 >15);
-	
-	int arr[15],lucky[5];
-	for(int i=1;i<16;i++){
-		arr[i]=i;
-	}
-		srand(time(NULL));	
-	for(int i=0;i<5;i++){
-		int select= 1+ rand()%(15-i);
-		lucky[i]=arr[i];
-		arr[i]=arr[14-i];
-	}
-	for (int i = 0; i < 5; i++) {
-        printf("%02d ", lucky[i]);
-    }
-	
+		int number1,number2;
+		number1=nhapTrongKhoang(1,15);
+		number2=nhapTrongKhoang(1,15);
+		printf("\tHe thong ghi nhan 2 so cua ban la: %d \t %d\n",number1,number2);
+		int lucky[5];
+		randLucky(lucky,5);
+		int check=checkLucky(lucky,5,number1,number2);
+		if(check==0){
+			printf("\n\n\tChuc ban may man lan sau.");
+		} else{
+			printf("\n\n\tChuc mung! Ban da trung giai.");
+		}
 	return 0;
 }
 
