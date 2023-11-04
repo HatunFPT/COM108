@@ -20,7 +20,7 @@ int main() {
         int dinex = rand() % (99 - i); // Chọn một vị trí ngẫu nhiên trong mảng còn lại
         selected[i] = numbers[i];  // Lưu số được chọn vào mảng selected
         // Loại bỏ số đã chọn bằng cách thay thế nó bằng số cuối cùng trong mảng
-        numbers[i] = numbers[98 - i];
+        numbers[i] = numbers[98 - i]
     }
 
     // In ra 5 số đã chọn
